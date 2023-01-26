@@ -1,0 +1,7 @@
+{
+  "home": {
+    "title": "Webseite"
+  },
+  "hello": "Hallo {name}!",
+  "fallback": "Fallback Nachricht"
+}
