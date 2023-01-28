@@ -10,7 +10,7 @@ function api<T>(url: string): Promise<T> {
 	return fetch(url)
 		.then(response => {
 			if (!response.ok) {
-				throw new Error(response.statusText)
+				console.warn(response.statusText)
 			}
 			return response.json()
 		})
@@ -35,12 +35,12 @@ const Layout = () => {
 				<Stack direction="horizontal" >
 					<Alert variant="light">{currentVersion}</Alert>
 					<Alert variant="light">
-						<a href="https://github.com/PhilippDehner/music-ear-trainer">GitHub</a>
+						<a target="_blank" rel="noreferrer" href="https://github.com/PhilippDehner/music-ear-trainer">GitHub</a>
 					</Alert>
-					{latestVersion!=null &&latestVersion!== currentVersion
+					{latestVersion != null && latestVersion !== currentVersion
 						? <Alert variant="light">
 							Newer version available! Download&nbsp;
-							<a target="_blank" href="https://github.com/PhilippDehner/music-ear-trainer/releases/latest">
+							<a target="_blank" rel="noreferrer" href="https://github.com/PhilippDehner/music-ear-trainer/releases/latest">
 								here
 							</a>.
 						</Alert>

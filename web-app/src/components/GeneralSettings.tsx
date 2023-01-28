@@ -1,4 +1,3 @@
-import Form from "react-bootstrap/Form";
 import { useState } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -12,8 +11,6 @@ class Settings {
 	Volume: number = 90;
 	ToneRange: ToneRange = new ToneRange();
 }
-
-const DefaultToneRange = new ToneRange()
 
 interface Props {
 	settings: Settings;
@@ -58,8 +55,8 @@ function GeneralSettings(props: Props) {
 
 	return (
 		<div>
-			<Container>
-				<Row>
+			<Container className="mt-3">
+				{/* <Row>
 					<Col md="auto">
 						<Form.Label>Volume {volume}%</Form.Label>
 					</Col>
@@ -71,8 +68,8 @@ function GeneralSettings(props: Props) {
 							max={100}
 						/>
 					</Col>
-				</Row>
-				<Row>
+				</Row> */}
+				<Row  md={'auto'}>
 					<Col>
 						<ToneSelector
 							label="Tiefster Ton"

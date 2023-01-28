@@ -42,19 +42,14 @@ class Tone {
 		}
 	}
 
-	public play(piano: Piano, volume: number = 100) {
-		// let audio = new Audio(
-		//   require("./../resources/sounds/" + this.Name + ".mp3")
-		// );
-		// audio.volume = volume / 100;
-		// console.info("Play sound:", this.Name);
-		// audio.play();
-
+	public play(piano: Piano, volume: number = 100, secondsplaying: number | undefined = undefined) {
 		// piano.pedalDown();
 		piano.keyDown({
 			note: this.Name,
-			// time: "+1"
+			// velocity: 2//Math.round(volume / 20)
 		});
+		if (secondsplaying != null && secondsplaying > 0)
+			piano.keyUp({ note: this.Name, time: "+" + secondsplaying });
 		console.info("Played tone", this.Name);
 	}
 

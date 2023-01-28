@@ -5,24 +5,37 @@ import "./App.css";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import Pitch from "./pages/Pitch";
+import { useState } from "react";
+
+let init = true;
+let piano = new Piano({
+	velocities: 1,
+	release: true,
+	pedal: true
+});
 
 function App() {
-  let piano = new Piano();
-  piano.toDestination(); //connect it to the speaker output
-  piano.load().then(() => {
-    console.log("loaded!");
-  });
+	const [pianoReadyState, setPianoReadyState] = useState(false);
 
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="Pitch" element={<Pitch piano={piano} />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
-  );
+	if (init) {
+		piano.toDestination(); //connect it to the speaker output
+		piano.load().then(_ => {
+			init = false;
+			setPianoReadyState(true);
+			console.info("Piano loaded");
+		});
+	}
+
+	return (
+		<BrowserRouter>
+			<Routes>
+				<Route path="/" element={<Layout />}>
+					<Route index element={<Home />} />
+					<Route path="Pitch" element={<Pitch piano={piano} pianoLoaded={pianoReadyState} />} />
+				</Route>
+			</Routes>
+		</BrowserRouter>
+	);
 }
 
 export default App;
