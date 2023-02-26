@@ -12,3 +12,13 @@ Simple web app to train hearing intervals, chords etc.
 ### Pitch trainer
 
 Train to recognize tones (pitch).
+
+## Usage
+
+### Windows
+
+Without installed npm:
+
+1. Extract the zip folder `music-ear-trainer.zip`.
+1. Run the `backend.exe` via command line or starting in Windows explorer.
+1. Open `http://localhost:3000`.
